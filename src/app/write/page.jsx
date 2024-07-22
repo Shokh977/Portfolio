@@ -13,7 +13,8 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "../../utilities/firebase";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const WritePage = () => {
   const { status } = useSession();
@@ -27,6 +28,8 @@ const WritePage = () => {
   const [catSlug, setCatSlug] = useState("");
 
   useEffect(() => {
+    if (!file) return;
+
     const storage = getStorage(app);
     const upload = () => {
       const name = new Date().getTime() + file.name;
@@ -49,7 +52,9 @@ const WritePage = () => {
               break;
           }
         },
-        (error) => {},
+        (error) => {
+          console.error("Upload failed:", error);
+        },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setMedia(downloadURL);
@@ -58,15 +63,17 @@ const WritePage = () => {
       );
     };
 
-    file && upload();
+    upload();
   }, [file]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
 
   if (status === "loading") {
     return <div className={styles.loading}>Loading...</div>;
-  }
-
-  if (status === "unauthenticated") {
-    router.push("/");
   }
 
   const slugify = (str) =>
@@ -78,22 +85,32 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        title,
-        desc: value,
-        img: media,
-        slug: slugify(title),
-        catSlug: catSlug || "style", //If not selected, choose the general category
-      }),
-    });
+    try {
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          desc: value,
+          img: media,
+          slug: slugify(title),
+          catSlug: catSlug || "style", // If not selected, choose the general category
+        }),
+      });
 
-    if (res.status === 200) {
-      const data = await res.json();
-      router.push(`/posts/${data.slug}`);
+      if (res.ok) {
+        const data = await res.json();
+        router.push(`/posts/${data.slug}`);
+      } else {
+        console.error("Failed to submit post:", res.status, await res.text());
+      }
+    } catch (error) {
+      console.error("Error during submission:", error);
     }
   };
+  
 
   return (
     <div className={styles.container}>
@@ -102,19 +119,20 @@ const WritePage = () => {
         placeholder="Title"
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
+        value={title}
       />
-      <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
+      <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)} value={catSlug}>
+        <option value="">Select a category</option>
         <option value="coding">Coding</option>
         <option value="news">News</option>
         <option value="nextjs">Next.JS</option>
         <option value="react">React</option>
         <option value="travel">Travel</option>
         <option value="javascript">JavaScript</option>
-
       </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
-          <Image src="/plus.png" alt="" width={16} height={16} />
+          <Image src="/plus.png" alt="Toggle media options" width={16} height={16} />
         </button>
         {open && (
           <div className={styles.add}>
@@ -126,14 +144,14 @@ const WritePage = () => {
             />
             <button className={styles.addButton}>
               <label htmlFor="image">
-                <Image src="/image.png" alt="" width={16} height={16} />
+                <Image src="/image.png" alt="Upload image" width={16} height={16} />
               </label>
             </button>
             <button className={styles.addButton}>
-              <Image src="/external.png" alt="" width={16} height={16} />
+              <Image src="/external.png" alt="Add external link" width={16} height={16} />
             </button>
             <button className={styles.addButton}>
-              <Image src="/video.png" alt="" width={16} height={16} />
+              <Image src="/video.png" alt="Upload video" width={16} height={16} />
             </button>
           </div>
         )}

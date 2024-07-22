@@ -4,6 +4,7 @@ import { About } from '../homeComponents/about/About';
 import { Projects } from '../homeComponents/projects/Projects';
 import { Work } from '../homeComponents/work/Work';
 import { PostHome } from '../homeComponents/postHome/PostHome';
+export const dynamic = "force-dynamic";
 
 const HomePage = ()=>{
  
