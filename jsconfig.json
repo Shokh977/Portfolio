@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@components/*": ["src/components/*"]
+    },
+    "baseUrl": "src/",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "types": [
+      "hast",
+      "node",
+      "parse-json",
+      "prop-types",
+      "quill",
+      "react",
+      "react-transition-group",
+      "unist"
+    ]
+  },
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.js", "**/*.jsx", "lib/prisma.jsx", "src/components/CategoryList"]
+}
+

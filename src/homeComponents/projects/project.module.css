@@ -1,0 +1,38 @@
+.container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .content h1 {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 36px;
+    line-height: 1.14;
+    text-align: center;
+    color: var(--textColor)
+  }
+  .content span {
+    color: #194bfd;
+  }
+  .content p {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: var(--softTextColor);
+    max-width: 500px;
+    width: 100%;
+  }
+  @media screen and (max-width:768px) {
+    .container{
+      display: none;
+    }
+  }
+  

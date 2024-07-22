@@ -1,0 +1,73 @@
+
+.userDropdown {
+  position: relative;
+ display: flex;
+ justify-content: center;
+
+
+}
+
+.userIcon {
+  width:40px;
+  height:40px;
+  cursor: pointer;
+  color: var(--textColor);
+}
+.userImg{
+  border-radius:50%;
+  border: 2px solid lightblue
+}
+
+.dropdownMenu {
+  border-radius: 8px;
+  position: absolute;
+  top: 100%;
+  left: -60%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bgBox);
+  color: var(--textColor);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden;
+  width: max-content
+}
+
+.dropdownMenu.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.dropdownMenu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.dropdownMenu li p{
+  font-size: 20px;
+}
+.dropdownMenu li {
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.destructive {
+  color: red;
+}
+
+.dropdownMenu li.destructive:hover {
+  background-color: red;
+  color: white;
+}
+.dropdownMenu li:hover {
+  background-color: rgba(140, 134, 134, 0.1);
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 768px){
+  .dropdownMenu li p{
+    font-size: 16px;
+  }
+}

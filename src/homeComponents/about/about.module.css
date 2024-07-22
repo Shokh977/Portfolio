@@ -1,0 +1,150 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+    margin-top: 100px;
+    height:100%
+  }
+  .aboutMe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .aboutMe h1 {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 32px;
+  }
+  .aboutMe p {
+    max-width: 500px;
+    width: 100%;
+    font-weight: 400px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--softTextColor)
+  }
+  .aboutMe span {
+    color: #194bfd;
+  }
+  .imgTxt {
+    display: flex;
+    gap: 150px;
+  }
+  .profileImage {
+    border-radius: 57px;
+    width: 147px;
+    height: 151px;
+  }
+  .txt {
+    border-radius: 16px;
+    padding: 45px 85px;
+    max-width: 780px;  
+    width: 100%;
+    background: var(--bgBox);
+  }
+  .aboutParagraph {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--softTextColor);
+  }
+  .txt button {
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 29px;
+    padding: 8px 18px;
+    background: linear-gradient(140deg, #194bfd 0%, #ad13fb 100%);
+    margin-top: 30px;
+  }
+  .txt button:hover {
+    background: linear-gradient(120deg, #1842da 20%, #7f13b6 100%);
+  }
+  .stack {
+    position: relative;
+    left: 0;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--softTextColor);
+    margin-top: 50px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .stackList {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px;
+    padding: 0;
+    margin: 0; 
+  }
+  
+  .stackList li {
+    display: flex;
+    align-items: center; /* Center items vertically within li */
+    gap: 10px;
+  }
+  .stackList li:hover{
+    color: blueviolet;
+    cursor: pointer;
+  }
+  .aboutMe .box {
+    position: absolute;
+    left: 170px;
+    bottom: -160px;
+  }
+  .aboutCircle {
+    padding: 60px;
+    position: absolute;
+    bottom: -720px;
+    right: 140px;
+  }
+  @media screen and (max-width: 1024px) {
+    .imgTxt {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .about {
+      height: 100%;
+    }
+    
+    .txt button {
+      margin: auto;
+      margin-top: 10px;
+    }
+    .txt p, .stack {
+      text-align: center;
+    }
+    .aboutMe .box {
+      display: none;
+    }
+    .aboutCircle {
+      padding: 60px;
+      position: absolute;
+      bottom: -570px;
+      right: 240px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .aboutCircle {
+      padding: 60px;
+      position: absolute;
+      bottom: -370px;
+      right: 240px;
+    }
+    .txt {
+      padding: 10px;
+      width: 350px; 
+       box-sizing: border-box;
+
+    }
+  }
+  

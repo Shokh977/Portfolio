@@ -1,0 +1,32 @@
+.container{
+    flex:5;
+}
+.title{
+    margin: 50px 0;
+    font-size:32px;
+    font-weight:700
+}
+.cardsContainer {
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 1200px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+}

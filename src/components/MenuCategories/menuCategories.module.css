@@ -1,0 +1,34 @@
+.categoryList{
+    margin-top:35px;
+    margin-bottom:60px;
+    display:flex;
+    flex-wrap:wrap;
+    gap: 15px;
+}
+.categoryItem{
+    padding:10px 25px;
+    border-radius: 10px;
+    font-size:14px;
+}
+.categoryItem.travel {
+    background-color: #576dff;
+    width: max-content;
+  }
+  .categoryItem.style {
+    background-color: #ff7857;
+    width: max-content;
+  }
+
+  .categoryItem.english {
+    background-color: #87ff57;
+    width: max-content;
+  }
+  .categoryItem.js {
+    background-color: #f8f10f;
+    width: max-content;
+  }
+  .categoryItem.react {
+    background-color: #fd41e8;
+    width: max-content;
+  }
+  

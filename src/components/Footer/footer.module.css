@@ -1,0 +1,98 @@
+.container{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  color: var(--softTextColor);
+}
+.brandDesc{
+  font-weight: 400;
+  color: gray;
+}
+.logoBrand{
+  display:flex;
+  gap:2px;
+  margin-bottom:10px
+}
+
+.content{
+  display: flex;
+  justify-content: space-between;
+  gap: 10rem;
+}
+.brand{
+  max-width: 500px;
+  width: 100%;
+}
+.brand h1 span{
+  color: #ac11ff;
+}
+.brand h1 {
+  font-size: 36px;
+}
+.contactInfo{
+  display: flex;
+  flex-direction: column;
+  margin-top:40px;
+  gap: 10px;
+}
+.socialMedia{
+  display: flex;
+  gap: 20px;
+}
+.contact p{
+  display: flex;
+  gap: 10px;
+}
+.contact{
+  display: flex;
+  flex-direction: column;
+gap: 10px;
+}
+.copy{
+  margin:10px 0 20px 0;
+}
+
+.line{
+  margin: 0;
+  height: 1px;
+  width: max-content;
+  background-color: #ac11ff;
+}
+/* .linked{
+  color:#0077B5
+}
+.instagram{
+  color:#C13584
+}
+.youtube{
+  color:#FF0000
+}
+.github{
+  color:#181717
+} */
+@media screen and (max-width:1024px) {
+  .container{
+    flex-direction: column;
+    align-items: center;
+  }  
+  .content{
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+@media screen and (max-width:640) {
+  .container{
+    flex-direction: column;
+    align-items: center;
+  }  
+  .content{
+    flex-direction: column;  
+      align-items: center;
+
+    gap: 2rem;
+  }
+}
+
+
