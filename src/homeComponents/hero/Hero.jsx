@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export const Hero = () => {
+  // Updated code string with escaped apostrophes
   const codeString = `const me = {
            name: 'Shokhrukh',
            whatIDo: 'web development',
@@ -20,14 +21,14 @@ export const Hero = () => {
         <div className={styles.shapes}>
           <Image
             src="/assets/hero/circle.svg"
-            alt=""
+            alt="Circle shape"
             className={styles.circle}
             width={20}
             height={20}
           />
           <Image
             src="/assets/hero/boxshaped.svg"
-            alt=""
+            alt="Box shaped icon"
             className={styles.box}
             width={20}
             height={20}
@@ -35,7 +36,7 @@ export const Hero = () => {
         </div>
         <div className={styles.heroTitle}>
           <h1>
-            I'm <span>쇼크룩</span>
+            I&apos;m <span>쇼크룩</span>
           </h1>
           <h1 className={styles.frontend}>
             <span>Frontend</span> Developer
@@ -46,7 +47,7 @@ export const Hero = () => {
         </div>
       </div>
       <div className={styles.heroRight}>
-        {/* <Image src='/assets/hero/snippet.png' width={463} height={314} alt="" className={styles.heroImg} /> */}
+        {/* <Image src='/assets/hero/snippet.png' width={463} height={314} alt="Snippet" className={styles.heroImg} /> */}
         <div className={styles.heroImg}>
           <div className={styles.head}>
             <div className={styles.circles}>
@@ -66,28 +67,28 @@ export const Hero = () => {
         <div className={styles.socialIcons}>
           <Image
             src="/assets/hero/css.png"
-            alt=""
+            alt="CSS icon"
             className={styles.github}
             width={50}
             height={50}
           />
           <Image
             src="/assets/hero/atom.png"
-            alt=""
+            alt="Atom icon"
             className={styles.instagram}
             width={50}
             height={50}
           />
           <Image
             src="/assets/hero/figma.png"
-            alt=""
+            alt="Figma icon"
             className={styles.youtube}
             width={50}
             height={50}
           />
           <Image
             src="/assets/hero/interface.png"
-            alt=""
+            alt="Interface icon"
             className={styles.linkedIn}
             width={50}
             height={50}

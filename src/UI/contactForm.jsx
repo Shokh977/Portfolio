@@ -25,8 +25,8 @@ const ContactForm = () => {
   return (
     <div className={styles.container}>
       <div>
-         <h1>Let's <span>Talk</span></h1>
-      <p>Any questions? Need a website?</p>
+        <h1>Let&apos;s <span>Talk</span></h1>
+        <p>Any questions? Need a website?</p>
       </div>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.input}>

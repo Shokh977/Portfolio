@@ -16,7 +16,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import styles from './loginpage.module.css';
 import { FcGoogle } from "react-icons/fc";
 
-
 const defaultTheme = createTheme();
 
 export default function LoginPage() { 
@@ -30,9 +29,7 @@ export default function LoginPage() {
     });
   };
 
-
   const { status } = useSession();
-
   const router = useRouter();
 
   if (status === "loading") {
@@ -40,7 +37,7 @@ export default function LoginPage() {
   }
 
   if (status === "authenticated") {
-    router.push("/")
+    router.push("/");
   }
 
   return (
@@ -66,11 +63,10 @@ export default function LoginPage() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <Image src='/assets/logo.png' width={45} height={30}/>
+              <Image src='/assets/logo.png' width={45} height={30} alt="Company logo" />
             </Avatar>
             <Grid sx={{ color: 'var(--softTextColor)' }}> 
-                            Sign in
-
+              Sign in
             </Grid>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -165,8 +161,8 @@ export default function LoginPage() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2" sx={{ color: 'var(--softTextColor)'}}>
-                    Don't have an account? Sign Up
+                  <Link href="#" variant="body2" sx={{ color: 'var(--softTextColor)' }}>
+                    Don&apos;t have an account? Sign Up
                   </Link>
                 </Grid>
               </Grid>
