@@ -23,3 +23,5 @@ build/
 
 # Next.js build output
 .next/
+# Local Netlify folder
+.netlify
