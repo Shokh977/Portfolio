@@ -28,7 +28,7 @@
   background-color: #57c4ff31;
 }
 
-.category.next {
+.category.nextjs {
   background-color: #da85c731;
 }
 
@@ -52,7 +52,6 @@
   border-radius: 50%;
   height:32px;
   width:32px;
-  border: 1px solid blueviolet;
 }
 
 @media screen and (max-width: 1280px) {

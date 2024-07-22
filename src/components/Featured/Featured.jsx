@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from 'next/link'
 
 const getData = async () => {
-  const res = await fetch('http://localhost:3000/api/posts');
+  const res = await fetch(`http://localhost:3000/api/posts`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -11,9 +11,10 @@ const getData = async () => {
 
   return res.json();
 };
-
 export const Featured = async () => {
-  const { posts } = await getData();
+  const  {posts}  = await getData();
+  
+  console.log(posts, 'posts ffrom featured')
 const sort = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 const lastest = sort[0]
 
