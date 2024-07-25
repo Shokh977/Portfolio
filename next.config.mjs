@@ -23,16 +23,15 @@ const nextConfig = {
   },
   webpack: (config, { isServer }) => {
     config.resolve.alias['@components'] = path.resolve(__dirname, 'components');
-    config.resolve.alias['@components'] = path.join(__dirname, 'components');
     config.resolve.alias['@styles'] = path.resolve(__dirname, 'styles');
-    config.resolve.alias['@styles'] = path.join(__dirname, 'styles');
+
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
-    // Example of ignoring specific modules
+
     if (!isServer) {
-      config.resolve.alias['installHook.js'] = false; // Example of ignoring a specific module
+      config.resolve.alias['installHook.js'] = false;
     }
 
     return config;
