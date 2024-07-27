@@ -6,11 +6,15 @@ import { ThemeContextProvider } from "../context/ThemeContext";
 import { ThemeProvider } from "../providers/ThemeProvider";
 import AuthProvider from './../providers/AuthProvider';
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Blog app",
+  title: "Uphill",
   description: "update your knowledge in Coding with us",
+  icons: {
+    icon: "/assets/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
