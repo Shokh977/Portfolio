@@ -1,4 +1,3 @@
-
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import { getServerSession } from "next-auth/next";
