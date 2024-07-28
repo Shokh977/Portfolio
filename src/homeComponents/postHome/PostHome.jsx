@@ -42,7 +42,6 @@ export const PostHome = async () => {
       )}                 <div className={styles.mask}></div>
               </div>
              <h1 className={styles.title}>{card.title}</h1>
-              <p className={styles.desc}>{card.desc}</p>
               <CgMoreO  size={30}/>
               </Link>
              

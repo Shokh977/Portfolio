@@ -26,13 +26,19 @@ const lastest = sort[0]
       {lastest && (
         <div className={styles.post}>
           <div className={styles.imgContainer}>
-            {lastest.img && (
+            {lastest.img ?
+             (
               <Image src={lastest.img} alt={posts.title} layout="fill" className={styles.image} />
-            )}
+            )
+            :
+            (
+              <Image src='/assets/favicon.png' alt={posts.title} layout="fill" className={styles.image} />
+            )
+            }
           </div>
           <div className={styles.textContainer}>
             <h1 className={styles.postTitle}>{lastest.title}</h1>
-            <p className={styles.postDesc}>{lastest.desc}</p>
+            <p className={styles.postDesc}>{lastest.desc.substring(0,100)}</p>
             <Link className={styles.button} href={`/posts/${lastest.slug}`}>More</Link>
             </div>
         </div>
