@@ -7,7 +7,7 @@ import Link from "next/link"
 
 const getData = async () => {
   const res = await fetch(
-    'http://localhost:3000/api/posts'
+    'https://portfolio-omega-sand-21.vercel.app/api/posts'
   );
 
   if (!res.ok) {

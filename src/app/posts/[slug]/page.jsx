@@ -8,7 +8,7 @@ import { formatDateTime } from './../../../UI/formatDateTime';
 
 const getData = async (slug) => {
     const res = await fetch(
-        `http://localhost:3000/api/posts/${slug}`,
+        `https://portfolio-omega-sand-21.vercel.app/api/posts/${slug}`,
         {
             cache: "no-store",
         }
