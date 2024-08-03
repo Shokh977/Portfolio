@@ -25,6 +25,9 @@ const getData = async (slug) => {
 const SinglePage = async ({ params }) => {
     const { slug } = params
     const data = await getData(slug)
+    console.log(data,  'data from cretaed post', 'plus ', slug ,': slug'
+    )
+
     return (
         <div className={styles.container}>
             <div className={styles.infoContainer}>
@@ -41,7 +44,7 @@ const SinglePage = async ({ params }) => {
                         <div className={styles.userTextContainer}>
                             <span className={styles.userName}>{data?.user?.name}</span>
                             <span className={styles.date}>{formatDateTime(data.createdAt)}</span>
-                            <span className={styles.view}><FaEye/> {data.views}</span>
+                            <span className={styles.view}><FaEye/>{data.views}</span>
                         </div>
                     </div>
                 </div>
