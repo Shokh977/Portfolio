@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./write.module.css";
 import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
@@ -14,103 +13,90 @@ import {
 } from "firebase/storage";
 import { app } from "../../utilities/firebase";
 import dynamic from "next/dynamic";
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import { CiImageOn } from "react-icons/ci";
+import { FaExternalLinkAlt, FaVideo } from "react-icons/fa";
+import { IoMdAddCircleOutline } from "react-icons/io";
 
-const WritePage = () => {
-  const { status } = useSession();
-  const router = useRouter();
-
-  const [open, setOpen] = useState(false);
-  const [file, setFile] = useState(null);
-  const [media, setMedia] = useState("");
-  const [value, setValue] = useState("");
-  const [title, setTitle] = useState("");
-  const [catSlug, setCatSlug] = useState("");
-
-  useEffect(() => {
-    if (!file) return;
-
-    const storage = getStorage(app);
-    const upload = () => {
-      const name = new Date().getTime() + file.name;
-      const storageRef = ref(storage, name);
-
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
+  const WritePage = () => {
+    const { status } = useSession();
+    const router = useRouter();
+  
+    const [open, setOpen] = useState(false);
+    const [file, setFile] = useState(null);
+    const [media, setMedia] = useState("");
+    const [value, setValue] = useState("");
+    const [title, setTitle] = useState("");
+    const [catSlug, setCatSlug] = useState("");
+  
+    useEffect(() => {
+      const storage = getStorage(app);
+      const upload = () => {
+        const name = new Date().getTime() + file.name;
+        const storageRef = ref(storage, name);
+  
+        const uploadTask = uploadBytesResumable(storageRef, file);
+  
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+            switch (snapshot.state) {
+              case "paused":
+                console.log("Upload is paused");
+                break;
+              case "running":
+                console.log("Upload is running");
+                break;
+            }
+          },
+          (error) => {},
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setMedia(downloadURL);
+            });
           }
-        },
-        (error) => {
-          console.error("Upload failed:", error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setMedia(downloadURL);
-          });
-        }
-      );
-    };
-
-    upload();
-  }, [file]);
-
-  useEffect(() => {
+        );
+      };
+  
+      file && upload();
+    }, [file]);
+  
+    if (status === "loading") {
+      return <div className={styles.loading}>Loading...</div>;
+    }
+  
     if (status === "unauthenticated") {
       router.push("/");
     }
-  }, [status, router]);
-
-  if (status === "loading") {
-    return <div className={styles.loading}>Loading...</div>;
-  }
-
-  const slugify = (str) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/[\s_-]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-
-  const handleSubmit = async () => {
-    try {
+  
+    const slugify = (str) =>
+      str
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/[\s_-]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+  
+    const handleSubmit = async () => {
       const res = await fetch("/api/posts", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify({
           title,
           desc: value,
           img: media,
           slug: slugify(title),
-          catSlug: catSlug || "style", // If not selected, choose the general category
+          catSlug: catSlug || "coding", //If not selected, choose the general category
         }),
       });
-
-      if (res.ok) {
+  
+      if (res.status === 200) {
         const data = await res.json();
         router.push(`/posts/${data.slug}`);
-      } else {
-        console.error("Failed to submit post:", res.status, await res.text());
       }
-    } catch (error) {
-      console.error("Error during submission:", error);
-    }
-  };
-  
+    };
 
   return (
     <div className={styles.container}>
@@ -121,7 +107,10 @@ const WritePage = () => {
         onChange={(e) => setTitle(e.target.value)}
         value={title}
       />
-      <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)} value={catSlug}>
+      <select
+        className={styles.select}
+        onChange={(e) => setCatSlug(e.target.value)}
+        value={catSlug}>
         <option value="">Select a category</option>
         <option value="coding">Coding</option>
         <option value="news">News</option>
@@ -132,7 +121,7 @@ const WritePage = () => {
       </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
-          <Image src="/plus.png" alt="Toggle media options" width={16} height={16} />
+          <IoMdAddCircleOutline size={16} />
         </button>
         {open && (
           <div className={styles.add}>
@@ -144,14 +133,14 @@ const WritePage = () => {
             />
             <button className={styles.addButton}>
               <label htmlFor="image">
-                <Image src="/image.png" alt="Upload image" width={16} height={16} />
+                <CiImageOn size={16} />
               </label>
             </button>
             <button className={styles.addButton}>
-              <Image src="/external.png" alt="Add external link" width={16} height={16} />
+              <FaExternalLinkAlt size={16} />
             </button>
             <button className={styles.addButton}>
-              <Image src="/video.png" alt="Upload video" width={16} height={16} />
+              <FaVideo size={16} />
             </button>
           </div>
         )}
