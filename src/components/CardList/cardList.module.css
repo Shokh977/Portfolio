@@ -1,5 +1,7 @@
 .container{
     flex:5;
+    align-items: center;
+    justify-content:center;
 }
 .title{
     margin: 50px 0;
@@ -11,22 +13,33 @@
   display: grid;
   gap: 16px;
   margin-bottom: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1350px) {
   .cardsContainer {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
   }
 }
 
-@media (max-width: 1199px) and (min-width: 768px) {
+@media (max-width: 1350px) and (min-width: 1200px) {
   .cardsContainer {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 4 equal columns */
   }
 }
 
-@media (max-width: 767px) {
+/* Medium screens (769px to 1199px): 3 cards per row */
+@media (max-width: 1199px) and (min-width: 769px) {
   .cardsContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 3 equal columns */
   }
 }
+
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: 1fr; /* 2 equal columns */
+  }
+}
+

@@ -18,7 +18,6 @@ export const Auth = ({ses}) => {
   }
 
   const isAdmin = session?.user?.role === 'ADMIN'
-  console.log('in auth status:', status, 'session:',session, 'isAdmin:', isAdmin)
    return (
     <>
       {status === "unauthenticated" ? (
@@ -30,15 +29,15 @@ export const Auth = ({ses}) => {
          <div className={styles.link}><UserProfile signOut={signOut} session = {ses}  /></div> 
         </>
       )}
+
+      
       <div className={styles.userNav}>
-         {status === "unauthenticated" ? (
-            <Link href="/login">Login</Link>
-          ) : (
+         {status === "unauthenticated" &&  
             <div className={styles.addNuser}>
           <Link href="/write" className={styles.link}><MdPostAdd size={32}/></Link>
           <UserProfile signOut={signOut} session = {ses} className={styles.user}/>
             </div>
-          )}  
+          }  
         <div
         className={styles.hamburger}
         onClick={() => setOpen((prev) => !prev)}

@@ -5,10 +5,14 @@
     justify-content: center;
     height: 100vh;
   }
+  .container p {
+    color: white;
+  }
   .container h1{
     font-weight: 600;
     font-size: 42px;
     text-align:center;
+    color: white;
 }
 .container h1 span{
     color:#4285f4;

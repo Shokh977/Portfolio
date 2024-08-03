@@ -5,10 +5,10 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin: 16px;
-    max-width: 280px; /* Fixed maximum width for the card */
     flex: 1;
     height: 320px;
+    width: 280px;
+
   }
   
   .imgContainer {

@@ -8,7 +8,6 @@
 .post {
   margin-top: 60px;
   display: flex;
-  align-items: center;
   gap: 50px;
 }
 .imgContainer {
@@ -25,7 +24,8 @@
   overflow:hidden;
   flex: 1;
   display: flex;
-  height: 300px;
+  min-height: 300px;
+  height:100%;
   flex-direction: column;
   gap: 20px;
 }
@@ -62,8 +62,15 @@
 }
 
 @media screen and (max-width: 768px) {
+ 
     .title{
-        font-size: 48px;
+        font-size: 40px;
+    }
+    .postDesc{
+      display: none;
+    }
+    .textContainer{
+      height: max-content
     }
 }
 

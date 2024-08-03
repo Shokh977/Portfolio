@@ -59,3 +59,10 @@
       display:none;
     }
   }
+
+  @media screen and (max-width: 768px) {
+   .box{
+    min-width:300px;
+    width:100%
+   }
+  }

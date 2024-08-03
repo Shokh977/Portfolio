@@ -7,7 +7,8 @@
     --textColor: black;
     --softBg: #f0f0f0;
     --softTextColor: #626262;
-    --bgBox:#0f072a}
+    --bgBox:#0f072a
+  }
   
   
   * {
@@ -17,7 +18,7 @@
   }
   
   body {
-    max-width: 100vw;
+    max-width: 100%;
     overflow-x: hidden;
   }
   
@@ -46,7 +47,7 @@
     min-height: 100vh;
     background-color: var(--bg);
     color: var(--textColor);
-    max-width:100vw
+    max-width:100%
   }
   
   .wrapper {
@@ -82,7 +83,9 @@
   }
   @media screen and (max-width: 640px) {
     .wrapper {
-      max-width: 475px;
+      max-width: 480px;
+      padding:0;
+      margin:0
     }
   }
   

@@ -161,8 +161,7 @@
       width: 80%;
     }
     .heroImg {
-      width: 363px;
-      height: 214px;
+      display: none;
     }
   
     .heroImg:hover + .socialIcons {
@@ -171,10 +170,3 @@
   
     
   }
-  
-  @media screen and (max-width: 350px) {
-    .heroImg {
-      display: none;
-    }
-  }
-  

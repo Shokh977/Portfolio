@@ -1,7 +1,7 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100px;
 }
 .links {
@@ -48,15 +48,11 @@
   }
   .logo h1{
     padding-right: 20px;
-    left:0;
-  }
-
+     left: 0
+   }
 }
 
 @media screen and (max-width: 640px) {
-  .links{
-    justify-content: flex-end;
-  }
   .link {
     display: none;
   }
